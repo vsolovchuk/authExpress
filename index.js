@@ -1,11 +1,18 @@
 const express = require("express");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+const config = require("./config");
+
 const app = express();
-const port = 3000;
+
+app.use(express.json());
+app.use(cors());
+app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
   res.send("Hello World2!");
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+app.listen(config.port, () => {
+  console.log(`Example app listening at http://localhost:${config.port}`);
 });
